@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sunsmart_administration_sunsmart_administration,sunsmart_administration.sunsmart_administration,model_sunsmart_administration_sunsmart_administration,,1,0,0,0

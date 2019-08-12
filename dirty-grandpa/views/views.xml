@@ -1,0 +1,58 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="dirty-grandpa.list">
+      <field name="name">dirty-grandpa list</field>
+      <field name="model">dirty-grandpa.dirty-grandpa</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="Number"/>
+          <field name="FirstName"/>
+          <field name="LastName"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <!--
+    <record model="ir.actions.act_window" id="dirty-grandpa.action_window">
+      <field name="name">dirty-grandpa window</field>
+      <field name="res_model">dirty-grandpa.dirty-grandpa</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    -->
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="dirty-grandpa.action_server">
+      <field name="name">dirty-grandpa server</field>
+      <field name="model_id" ref="model_dirty-grandpa_dirty-grandpa"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    <!--
+    <menuitem name="dirty-grandpa" id="dirty-grandpa.menu_root"/>
+    -->
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="dirty-grandpa.menu_1" parent="dirty-grandpa.menu_root"/>
+    <menuitem name="Menu 2" id="dirty-grandpa.menu_2" parent="dirty-grandpa.menu_root"/>
+    -->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="dirty-grandpa.menu_1_list" parent="dirty-grandpa.menu_1"
+              action="dirty-grandpa.action_window"/>
+    <menuitem name="Server to list" id="dirty-grandpa" parent="dirty-grandpa.menu_2"
+              action="dirty-grandpa.action_server"/>
+    -->
+  </data>
+</odoo>

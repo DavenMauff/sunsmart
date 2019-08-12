@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+        <record>
+		<Number>18490287</Number>
+		<FirstName>Richard</FirstName>
+		<LastName>Barnett</LastName>
+		<Department>Socio-Infomatics</Department>
+		<EmailAddress>18490287@sun.ac.za</EmailAddress>
+		<PhoneNumber>825678765</PhoneNumber>
+	</record>
+	<record>
+		<Number>78590378</Number>
+		<FirstName>Doug</FirstName>
+		<LastName>Parry</LastName>
+		<Department>Socio-Infomatics</Department>
+		<EmailAddress>78590378@sun.ac.za</EmailAddress>
+		<PhoneNumber>798765678</PhoneNumber>
+	</record>
+	<record>
+		<Number>17892873</Number>
+		<FirstName>Dewald</FirstName>
+		<LastName>Blaauw</LastName>
+		<Department>Socio-Infomatics</Department>
+		<EmailAddress>17892873@sun.ac.za</EmailAddress>
+		<PhoneNumber>835867899</PhoneNumber>
+	</record>
+    </data>
+</odoo>
