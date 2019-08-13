@@ -17,6 +17,7 @@ class Lecturers(models.Model):  # done
     _name = "lecturers"
     _description = 'Lecturers'
     _rec_name = 'student_number'  # this is the unique identifier but do we want name?
+    _inherit = ['res.users']
 
     student_number = student_number = fields.Integer(
         string='SST', default=lambda self: self.env['ir.sequence'].next_by_code('increment_student_number'))
@@ -26,6 +27,19 @@ class Lecturers(models.Model):  # done
     id_number = fields.Char(string="ID Number", required=True, )
     department = fields.Many2one(
         comodel_name='departments', )
+    login = fields.Char(string="login", required=True,)
+    password = fields.Char(String="password", required=True,)
+
+    @api.model
+    def create(self, vals):
+        res = super(Lecturers, self).create(vals)
+        self.env['res.users'].create({
+            'name': self.first_name,
+            'email': self.first_name,
+            'login': self.login,
+            'new_password': self.password,
+        })
+        return res
 
 
 class Modules(models.Model):  # done
