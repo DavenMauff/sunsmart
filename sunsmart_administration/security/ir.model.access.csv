@@ -1,5 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_sunsmart_administration,sunsmart_administration.sunsmart_administration,model_departments,,1,1,1,1
-access_sunsmart_administration,sunsmart_administration.sunsmart_administration,model_lecturers,,1,1,1,1
-
-
+access_sunsmart_administration_1,sunsmart_administration.sunsmart_administration,model_departments,,1,1,1,1
+access_sunsmart_administration_2,sunsmart_administration.sunsmart_administration,model_lecturers,,1,1,1,1
+access_sunsmart_administration_3,sunsmart_administration.sunsmart_administration,model_modules,,1,1,1,1
+access_sunsmart_administration_4,sunsmart_administration.sunsmart_administration,model_degrees,,1,1,1,1

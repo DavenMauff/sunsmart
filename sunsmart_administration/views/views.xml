@@ -24,7 +24,7 @@
     </record>
 
     <record id="action_degrees_views" model="ir.actions.act_window">
-      <field name="name">degrees</field>
+      <field name="name">Degrees</field>
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">degrees</field>
       <field name="view_mode">tree,form</field>
@@ -51,7 +51,7 @@
     </record>
 
     <record id="action_modules_views" model="ir.actions.act_window">
-      <field name="name">modules</field>
+      <field name="name">Modules</field>
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">modules</field>
       <field name="view_mode">tree,form</field>
@@ -79,7 +79,7 @@
     
 
     <record id="action_departments_views" model="ir.actions.act_window">
-      <field name="name">departments</field>
+      <field name="name">Departments</field>
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">departments</field>
       <field name="view_mode">tree,form</field>
@@ -92,6 +92,27 @@
         </p>
       </field>
     </record>
+
+     <record id ="view_lecturers_add_form" model="ir.ui.view">
+        <field name = "name">view.lecturers.add.form</field>
+        <field name="model">lecturers</field>
+        <field name="arch" type="xml">
+          <form name = "Lecturers Add Form">
+            <sheet>
+              <group>
+                <group>
+                  <field name="first_name"/>
+                  <field name="last_name"/>
+                  <field name="phone_number"/>
+                  <field name="id_number"/>
+                  <field name="department"/>
+                  <button name="add_lecturer" string="Add" type="object" class="oe_highlight"/>
+                </group>
+              </group>
+            </sheet>
+          </form>
+        </field>
+      </record>
 
     <record id="view_lecturer_tree" model="ir.ui.view">
       <field name="name">view.lecturer.tree</field>
@@ -110,7 +131,7 @@
     </record>
 
     <record id="action_lecturers_views" model="ir.actions.act_window">
-      <field name="name">lecturers</field>
+      <field name="name">Lecturers</field>
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">lecturers</field>
       <field name="view_mode">tree,form</field>
@@ -124,8 +145,8 @@
       </field>
     </record>
    
-  <menuitem id="menu_administration_root" name="Administration" sequence="10"/>
-  <menuitem id="menu_dbmanagement_categ" name="Database Management" parent="menu_administration_root" sequence="1"/>
+  <menuitem id="menu_administration_root" name="SUNSmart" sequence="100"/>
+  <menuitem id="menu_dbmanagement_categ" name="Database Management" parent="menu_administration_root" sequence="100"/>
   <menuitem id="menu_departments" name="Departments" parent="menu_dbmanagement_categ" action="action_departments_views" sequence="1"/>
   <menuitem id="menu_lecturers" name="Lecturers" parent="menu_dbmanagement_categ" action="action_lecturers_views" sequence="2"/>
   <menuitem id="menu_modules" name="Modules" parent="menu_dbmanagement_categ" action="action_modules_views" sequence="3"/>
