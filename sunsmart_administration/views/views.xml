@@ -1,6 +1,70 @@
 <odoo>
   <data>
   
+  <record id="view_degrees_tree" model="ir.ui.view">
+      <field name="name">view.degrees.tree</field>
+      <field name="model">degrees</field>
+
+      <field name="arch" type="xml">
+        <tree string="Degrees Tree">
+          <field name="module_1"/>
+          <field name="module_2"/>
+          <field name="module_3"/>
+          <field name="module_4"/>
+          <field name="module_5"/>
+          <field name="module_6"/>
+          <field name="module_7"/>
+          <field name="module_8"/>
+          <field name="module_9"/>
+          <field name="module_10"/>
+          <field name="module_11"/>
+          <field name="module_12"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="action_degrees_views" model="ir.actions.act_window">
+      <field name="name">degrees</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">degrees</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_type">form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create"> 
+          Degrees
+        </p><p>
+          Click to Add
+        </p>
+      </field>
+    </record>
+
+  <record id="view_modules_tree" model="ir.ui.view">
+      <field name="name">view.modules.tree</field>
+      <field name="model">modules</field>
+
+      <field name="arch" type="xml">
+        <tree string="Modules Tree">
+          <field name="module_name"/>
+          <field name="lecturer"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="action_modules_views" model="ir.actions.act_window">
+      <field name="name">modules</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">modules</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_type">form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create"> 
+          Modules
+        </p><p>
+          Click to Add
+        </p>
+      </field>
+    </record>
+
     <record id="view_departments_tree" model="ir.ui.view">
       <field name="name">view.departments.tree</field>
       <field name="model">departments</field>
@@ -64,6 +128,8 @@
   <menuitem id="menu_dbmanagement_categ" name="Database Management" parent="menu_administration_root" sequence="1"/>
   <menuitem id="menu_departments" name="Departments" parent="menu_dbmanagement_categ" action="action_departments_views" sequence="1"/>
   <menuitem id="menu_lecturers" name="Lecturers" parent="menu_dbmanagement_categ" action="action_lecturers_views" sequence="2"/>
+  <menuitem id="menu_modules" name="Modules" parent="menu_dbmanagement_categ" action="action_modules_views" sequence="3"/>
+  <menuitem id="menu_degrees" name="Degrees" parent="menu_dbmanagement_categ" action="action_degrees_views" sequence="4"/>
 
   </data>
 </odoo>
