@@ -2,7 +2,7 @@
 from odoo import http
 
 
-# class StudentApplication(http.Controller):
-#     @http.route('/application', auth='public')
-#     def index(self, **kw):
-#         return http.request.render('application.templates')
+class StudentApplication(http.Controller):
+    @http.route('/portal', auth='public', )
+    def index(self, **kw):
+        return http.request.render('sunsmart_administration.index', {})

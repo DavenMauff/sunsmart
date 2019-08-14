@@ -3,3 +3,5 @@ access_sunsmart_administration_1,sunsmart_administration.sunsmart_administration
 access_sunsmart_administration_2,sunsmart_administration.sunsmart_administration,model_lecturers,,1,1,1,1
 access_sunsmart_administration_3,sunsmart_administration.sunsmart_administration,model_modules,,1,1,1,1
 access_sunsmart_administration_4,sunsmart_administration.sunsmart_administration,model_degrees,,1,1,1,1
+access_sunsmart_administration_5,sunsmart_administration.sunsmart_administration,model_users,,1,1,1,1
+access_sunsmart_administration_6,sunsmart_administration.sunsmart_administration,model_student_application,,1,1,1,1

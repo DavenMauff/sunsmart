@@ -1,10 +1,7 @@
 <odoo>
     <data>
-         <!-- <template id="application.templates">              
-        
-            <head>
-                <title>Graph Web Controller Example</title>               
-            </head>
-            </template> -->
+         <template id="index">
+            <h1>Bitch</h1>
+        </template>
     </data>
 </odoo>
