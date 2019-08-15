@@ -37,11 +37,16 @@ class Lecturers(models.Model):
     department = fields.Many2one(
         comodel_name='departments', )
     password = fields.Char(String="password", required=True,)
+    status = fields.Boolean(string='status', default=True, )
 
     @api.multi
     def add_em(self):
         x = self.env['res.users'].create(
             {'name': self.first_name, 'email': self.email_address, 'login': self.email_address, 'new_password': self.password})
+        # self.write.status = False
+        self.write({'status': False})
+        # data = {'value': {'status': 'approve'}}
+        # return data
 
         # @api.multi
         # def add_lecturer(self):
@@ -98,6 +103,7 @@ class Degree(models.Model):
     _description = 'Degrees'
     _rec_name = 'degree_name'
 
+    name = fields.Char(compute="_get_degree_name")
     degree_name = fields.Char(string="Degree Name", required=True, )
     module_1 = fields.Many2one(comodel_name='modules', )
     module_2 = fields.Many2one(comodel_name='modules', )
@@ -111,3 +117,8 @@ class Degree(models.Model):
     module_10 = fields.Many2one(comodel_name='modules', )
     module_11 = fields.Many2one(comodel_name='modules', )
     module_12 = fields.Many2one(comodel_name='modules', )
+
+    @api.multi
+    def _get_degree_name(self):
+        for record in self:
+            record.name = record.degree_name
