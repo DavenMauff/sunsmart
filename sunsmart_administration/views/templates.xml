@@ -1,7 +1,5 @@
 <odoo>
     <data>
-         <template id="index">
-            <h1>Bitch</h1>
-        </template>
+
     </data>
 </odoo>

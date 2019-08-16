@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*-
 
-from . import models, student
+from . import degree, departments, lecturers, modules, student, users, marks
