@@ -1,0 +1,22 @@
+<odoo>
+    <data>
+        <!--Tree view to display marks of each student-->
+        <record id="view_marks_tree" model="ir.ui.view">
+            <field name="name">view.marks.tree</field>
+            <field name="model">marks</field>
+
+            <field name="arch" type="xml">
+                <tree string="Marks Tree">
+                <field name="userid"/>
+                <field name="student_id_number"/>
+                <field name="student_first_name"/>
+                <field name="student_last_name"/>
+                <field name="department"/>
+                <field name="module"/>
+                <field name="result"/>
+                </tree>
+            </field>
+        </record>
+        
+    </data>
+</odoo>

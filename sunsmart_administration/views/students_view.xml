@@ -1,0 +1,60 @@
+<odoo>
+    <data>
+        <!--Tree view for students-->
+        <record id="view_students_tree" model="ir.ui.view">
+            <field name="name">view.students.tree</field>
+            <field name="model">students</field>
+
+            <field name="arch" type="xml">
+                <tree string="Students Tree">
+                <field name="first_name"/>
+                <field name="last_name"/>
+                <field name="id_number"/>
+                <field name="dob"/>
+                <field name="degree_choice"/>
+                </tree>
+            </field>
+        </record>
+
+    
+        <!--Tree view for student application -->
+        <record id="view_student_application_tree" model="ir.ui.view">
+            <field name="name">view.student.application.tree</field>
+            <field name="model">student.application</field>
+
+            <field name="arch" type="xml">
+                <tree string="Student Application Tree">
+                <field name="first_name"/>
+                <field name="last_name"/>
+                <field name="id_number"/>
+                <field name="dob"/>
+                <field name="degree_choice"/>
+                <field name="transcripts"/>
+                <button name="accept_student" string="Accept" type="object"/>
+                <button name="" string="Reject" type="object"/>
+                </tree>
+            </field>
+        </record>
+
+    
+        <!--Tree view for student application -->
+        <record id="view_student_application_tree" model="ir.ui.view">
+            <field name="name">view.student.application.tree</field>
+            <field name="model">student.application</field>
+
+            <field name="arch" type="xml">
+                <tree string="Degrees Tree">
+                <field name="first_name"/>
+                <field name="last_name"/>
+                <field name="id_number"/>
+                <field name="dob"/>
+                <field name="degree_choice"/>
+                <field name="transcripts"/>
+                <button name="accept_student" string="Accept" type="object"/>
+                <button name="reject_student" string="Reject" type="object"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</odoo>

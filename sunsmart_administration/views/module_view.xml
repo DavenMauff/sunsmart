@@ -1,0 +1,17 @@
+<odoo>
+    <data>
+        <!--Tree views for modules-->
+        <record id="view_modules_tree" model="ir.ui.view">
+            <field name="name">view.modules.tree</field>
+            <field name="model">modules</field>
+
+            <field name="arch" type="xml">
+                <tree string="Modules Tree">
+                <field name="module_name"/>
+                <field name="lecturer"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</odoo>

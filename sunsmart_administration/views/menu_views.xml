@@ -1,0 +1,171 @@
+<odoo>
+    <data>
+        <!--Action window for lecturers-->
+        <record id="action_lecturers_views" model="ir.actions.act_window">
+            <field name="name">Lecturers</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">lecturers</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create"> 
+                Lecturers
+                </p><p>
+                Click to Register
+                </p>
+            </field>
+        </record>
+
+        <!--Action window for Marks-->
+        <record id="action_marks_views" model="ir.actions.act_window">
+            <field name="name">Marks </field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">marks</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create"> 
+                Marks 
+                </p><p>
+                There are no marks
+                </p>
+            </field>
+        </record>
+
+        <!--Action window for Students-->
+        <record id="action_students_views" model="ir.actions.act_window">
+            <field name="name">Students </field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">students</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create"> 
+                Students 
+                </p><p>
+                There are no students
+                </p>
+            </field>
+        </record>
+
+        <!--Action window for student applications-->
+        <record id="action_student_application_views" model="ir.actions.act_window">
+            <field name="name">Student Applications</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">student.application</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create"> 
+                Perspective Students 
+                </p><p>
+                There are no student application
+                </p>
+            </field>
+        </record>
+
+        <!--Action window for degrees-->
+        <record id="action_degrees_views" model="ir.actions.act_window">
+            <field name="name">Degrees</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">degrees</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create"> 
+                Degrees
+                </p><p>
+                Click to Add
+                </p>
+            </field>
+        </record>
+
+        <!--Action window for users-->
+        <record id="action_users_views" model="ir.actions.act_window">
+            <field name="name">Users</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">users</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create"> 
+                Users
+                </p><p>
+                Click to Add
+                </p>
+            </field>
+        </record>
+
+        <!--Action window for modules-->
+        <record id="action_modules_views" model="ir.actions.act_window">
+            <field name="name">Modules</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">modules</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create"> 
+                Modules
+                </p><p>
+                Click to Add
+                </p>
+            </field>
+        </record>
+
+        <!--Action window for departments-->
+        <record id="action_departments_views" model="ir.actions.act_window">
+            <field name="name">Departments</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">departments</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create"> 
+                Departments
+                </p><p>
+                Click to Add
+                </p>
+            </field>
+        </record>
+
+        <!--Action window for lecturers kanban-->
+        <record id="action_lecturers_kanban" model="ir.actions.act_window">
+          <field name="name">Lecturers</field>
+          <field name="type">ir.actions.act_window</field>
+          <field name="res_model">lecturers</field>
+          <field name="view_mode">kanban,tree,form</field>
+          <field name="view_type">form</field>
+          <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+              Lecturers
+            </p><p>
+              Click to Register
+            </p>
+          </field>
+        </record>
+        <!--Main menu item-->
+        <menuitem id="menu_administration_root" name="SUNSmart" sequence="100"/>
+
+        <!--Dropdown for database management-->
+        <menuitem id="menu_dbmanagement_categ" name="Database Management" parent="menu_administration_root" sequence="10"/>
+        <menuitem id="menu_lecturers_categ" name="Lecturers" parent="menu_administration_root" sequence="10"/>
+        <menuitem id="menu_students_categ" name="Students" parent="menu_administration_root" sequence="10"/>
+        <menuitem id="menu_profile_categ" name="Profile" parent="menu_administration_root" sequence="10"/>
+        <menuitem id="menu_marks_categ" name="Marks" parent="menu_administration_root" sequence="10"/>
+
+        <!--Dropdown for database management-->
+        <menuitem id="menu_departments" name="Departments" parent="menu_dbmanagement_categ" action="action_departments_views" sequence="1"/>
+        <menuitem id="menu_lecturers" name="Lecturers" parent="menu_dbmanagement_categ" action="action_lecturers_views" sequence="2"/>
+        <menuitem id="menu_modules" name="Modules" parent="menu_dbmanagement_categ" action="action_modules_views" sequence="3"/>
+        <menuitem id="menu_degrees" name="Degrees" parent="menu_dbmanagement_categ" action="action_degrees_views" sequence="4"/>
+        <menuitem id="menu_users" name="Users" parent="menu_dbmanagement_categ" action="action_users_views" sequence="5"/>
+        <menuitem id="menu_big_lecturers" name="View Lecturers" parent="menu_lecturers_categ" action="action_lecturers_kanban" sequence="1"/>  
+        <menuitem id="menu_prospective_students" name="Prospective Students" parent="menu_students_categ" action="action_student_application_views" sequence="1"/>
+        <menuitem id="menu_students" name="Students" parent="menu_students_categ" action="action_students_views" sequence="2"/>
+
+        <!--Dropdown for database management-->
+        <menuitem id="menu_profile" name="Needs to change" parent="menu_profile_categ" action="action_degrees_views" sequence="1"/>
+        <menuitem id="menu_marks" name="Add Marks" parent="menu_marks_categ" action="action_marks_views" sequence="1"/>
+
+    </data>
+</odoo>

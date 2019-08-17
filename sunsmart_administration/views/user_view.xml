@@ -1,0 +1,19 @@
+<odoo>
+    <data>
+        <!--Tree view for users -->
+        <record id="view_users_tree" model="ir.ui.view">
+            <field name="name">view.users.tree</field>
+            <field name="model">users</field>
+
+            <field name="arch" type="xml">
+                <tree string="Users Tree">
+                <field name="name"/>
+                <field name="email"/>
+                <field name="login"/>
+                <field name="new_password"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</odoo>

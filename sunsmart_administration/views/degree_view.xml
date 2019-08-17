@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+        <!--Tree view to display degree and assosaited modules-->
+        <record id="view_degrees_tree" model="ir.ui.view">
+            <field name="name">view.degrees.tree</field>
+            <field name="model">degrees</field>
+
+            <field name="arch" type="xml">
+                <tree string="Degrees Tree">
+                <field name="degree_name"/>
+                <field name="module_1"/>
+                <field name="module_2"/>
+                <field name="module_3"/>
+                <field name="module_4"/>
+                <field name="module_5"/>
+                <field name="module_6"/>
+                <field name="module_7"/>
+                <field name="module_8"/>
+                <field name="module_9"/>
+                <field name="module_10"/>
+                <field name="module_11"/>
+                <field name="module_12"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</odoo>

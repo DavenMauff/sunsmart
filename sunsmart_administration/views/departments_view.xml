@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+        <!--Tree view to display departments-->
+         <record id="view_departments_tree" model="ir.ui.view">
+            <field name="name">view.departments.tree</field>
+            <field name="model">departments</field>
+
+            <field name="arch" type="xml">
+                <tree string="Departments Tree">
+                <field name="department_name"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</odoo>

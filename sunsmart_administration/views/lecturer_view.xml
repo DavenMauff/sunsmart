@@ -1,0 +1,75 @@
+<odoo>
+    <data>
+        <!--Form to add lecturers to the database-->
+        <record id ="view_lecturers_add_form" model="ir.ui.view">
+            <field name = "name">view.lecturers.add.form</field>
+            <field name="model">lecturers</field>
+            <field name="arch" type="xml">
+            <form name = "Lecturers Add Form">
+                <sheet>
+                <group>
+                    <group>
+                    <field name="image" widget='image' />
+                    <field name="first_name"/>
+                    <field name="last_name"/>
+                    <field name="phone_number"/>
+                    <field name="email_address"/>
+                    <field name="id_number"/>
+                    <field name="department"/>
+                    <field name="password"/>
+                    </group>
+                </group>
+                </sheet>
+            </form>
+            </field>
+        </record>
+
+        <!--Tree view to display all lecturers-->
+        <record id="view_lecturer_tree" model="ir.ui.view">
+            <field name="name">view.lecturer.tree</field>
+            <field name="model">lecturers</field>
+
+            <field name="arch" type="xml">
+                <tree string="lecturer Tree">
+                <field name="first_name"/>
+                <field name="last_name"/>
+                <field name="email_address"/>
+                <field name="phone_number"/> 
+                <field name="id_number"/> 
+                <field name="department"/>
+                <field name="status" readonly="True"/>
+                <button name="add_em" string="Confirm" type="object" class="oe_highlight" attrs="{'invisible':[('status','=','approved')]}"/>
+                </tree>
+            </field>
+        </record>
+
+    
+        <!--Kanban view to display all lecturers in the database-->
+        <record id="view_lecturer_kanban" model="ir.ui.view">
+                <field name="name">view.lecturer.kanban</field>
+                <field name="model">lecturers</field>
+                <field name="priority">10</field>
+                <field name="arch" type="xml">
+                    <kanban>
+                        <field name="image" widget='image' />
+                        <field name="first_name"/>
+                        <field name="last_name"/>
+                        <field name="id"/>
+                        <field name="department"/>
+
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div>
+                            <img t-att-src="kanban_image('lecturers', 'image', record.id.raw_value)" style="width:50px; height:100x"/>
+                            <span t-if="record.first_name.raw_value" class="o_kanban_record_subtitle"><field name="first_name"/></span>
+                            <span t-if="record.last_name.raw_value" class="o_kanban_record_subtitle"><field name="last_name"/></span>
+                            <span t-if="record.department.raw_value" class="o_kanban_record_subtitle"><field name="department"/></span>
+                            </div>
+                        </t>
+                    </templates>
+                    </kanban>
+                </field>
+        </record>
+
+    </data>
+</odoo>
