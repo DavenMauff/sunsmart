@@ -1,0 +1,26 @@
+<odoo>
+    <data>
+
+        <record id="action_potential_waiters_views" model="ir.actions.act_window">
+            <field name="name">Potential Waiters</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">potential.waiters</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create"> 
+                Potential Waiters
+                </p><p>
+                Click to Add
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_administration_root" name="WaiterWise" sequence="100"/>
+
+        <menuitem id="menu_waiters_categ" name="Waiters" parent="menu_administration_root" sequence="10"/>
+
+        <menuitem id="menu_potential_lecturers" name="Potential Lecturers" parent="menu_waiters_categ" sequence="1"/>
+
+    </data>
+</odoo>

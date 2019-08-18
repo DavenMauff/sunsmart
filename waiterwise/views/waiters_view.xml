@@ -6,11 +6,11 @@
 
             <field name="arch" type="xml">
                 <tree string="Potential Waiters Tree">
-                    <field name="first_name">
-                    <field name="last_name">
-                    <field name="phone_number">
-                    <field name="id_number">
-                    <field name="dob">
+                    <field name="first_name"/>
+                    <field name="last_name"/>
+                    <field name="phone_number"/>
+                    <field name="id_number"/>
+                    <field name="dob"/>
                 </tree>
             </field>
         </record>

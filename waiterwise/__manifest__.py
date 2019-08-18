@@ -29,6 +29,7 @@
         'views/views.xml',
         'views/templates.xml',
         'views/waiters_view.xml',
+        'views/menu_view.xml',
 
     ],
     # only loaded in demonstration mode

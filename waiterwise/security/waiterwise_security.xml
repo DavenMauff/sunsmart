@@ -1,13 +1,21 @@
 <odoo>
     <data>
 
-        <record id="module_sunsmart_category" model="ir.module.category">
-            <field name="name">SUNSmart</field>
+        <record id="module_waiterwise_category" model="ir.module.category">
+            <field name="name">Waiterwise</field>
+        </record>
+
+        <record id="group_waiters" model="res.groups">
+            <field name="name">Waiters</field>
+            <field name="category_id" ref="module_waiterwise_category"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
         </record>
 
         <record id="group_admin" model="res.groups">
             <field name="name">Admin</field>
             <field name="category_id" ref="module_waiterwise_category"/>
-            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="implied_ids" eval="[(4, ref('group_waiters'))]"/>
             <field name="users" eval="[(4, ref('base.user_root')),(4, ref('base.user_admin'))]"/>
         </record>
+    </data>
+</odoo>
