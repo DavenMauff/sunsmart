@@ -2,14 +2,13 @@
 
 from odoo import models, fields, api
 
-# class waiterwise(models.Model):
-#     _name = 'waiterwise.waiterwise'
 
-#     name = fields.Char()
-#     value = fields.Integer()
-#     value2 = fields.Float(compute="_value_pc", store=True)
-#     description = fields.Text()
-#
-#     @api.depends('value')
-#     def _value_pc(self):
-#         self.value2 = float(self.value) / 100
+class PotentialWaiters(models.Model):
+    _name = "potential.waiters"
+    _description = "Potential Waiters"
+
+    first_name = fields.Char(string="First Name", required=True, )
+    last_name = fields.Char(string="Last Name", required=True, )
+    phone_number = fields.Char(string="Phone Number", required=True, )
+    id_number = fields.Char(string="ID Number", required=True, )
+    dob = fields.Char(string="Date of Birth", required=True, )

@@ -1,2 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_waiterwise_waiterwise,waiterwise.waiterwise,model_waiterwise_waiterwise,,1,0,0,0
+access_admin_potential_waiters,access_admin_potential_waiters,model_potential_waiters,group_admin,1,1,1,1
