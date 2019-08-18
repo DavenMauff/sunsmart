@@ -20,7 +20,7 @@
 
         <menuitem id="menu_waiters_categ" name="Waiters" parent="menu_administration_root" sequence="10"/>
 
-        <menuitem id="menu_potential_lecturers" name="Potential Lecturers" parent="menu_waiters_categ" sequence="1"/>
+        <menuitem id="menu_potential_lecturers" name="Potential Lecturers" parent="menu_waiters_categ" sequence="1" action="action_potential_waiters_views"/>
 
     </data>
 </odoo>
