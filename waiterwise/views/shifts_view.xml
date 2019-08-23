@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+
+        <record id="view_shifts_tree" model="ir.ui.view">
+            <field name="name">view.shifts.tree</field>
+            <field name="model">shifts</field>
+
+            <field name="arch" type="xml">
+                <tree string="Potential Waiters Tree">
+                    <field name="week_number"/>
+                    <field name="waiter"/>
+                    <field name="day"/>
+                    <field name="period"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>

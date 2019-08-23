@@ -1,0 +1,33 @@
+<odoo>
+    <data>
+
+          <record id="view_wines_tree" model="ir.ui.view">
+            <field name="name">view.wines.tree</field>
+            <field name="model">wines</field>
+
+            <field name="arch" type="xml">
+                <tree string="Wines Inventory">
+                    <field name="name"/>
+                    <field name="vintage"/>
+                    <field name="varietal"/>
+                    <field name="stock"/>
+                    <button name="action_wines_views" string="Order" type="action"/>
+                </tree>
+            </field>
+        </record>
+
+          <record id="view_food_tree" model="ir.ui.view">
+            <field name="name">view.food.tree</field>
+            <field name="model">food</field>
+
+            <field name="arch" type="xml">
+                <tree string="Food Inventory">
+                    <field name="name"/>
+                    <field name="expiration_date"/>
+                    <field name="stock"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -24,6 +24,18 @@
             <field name="groups" eval="[(4,ref('group_admin'))]"/>
         </record>
 
+        <record id="potential_waiters_rule" model="ir.rule">
+            <field name="name">Potential Waiters User Access</field>
+            <field name="model_id" ref="model_waiters"/>
+            <field name="groups" eval="[(4,ref('group_admin'))]"/>
+        </record>
+
+        <record id="potential_waiters_rule" model="ir.rule">
+            <field name="name">Potential Waiters User Access</field>
+            <field name="model_id" ref="model_shifts"/>
+            <field name="groups" eval="[(4,ref('group_admin'))]"/>
+        </record>
+
 
 
     </data>

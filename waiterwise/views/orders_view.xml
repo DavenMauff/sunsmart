@@ -1,0 +1,41 @@
+<odoo>
+    <data>
+
+        <record id="view_orders_tree" model="ir.ui.view">
+            <field name="name">view.orders.tree</field>
+            <field name="model">orders</field>
+
+            <field name="arch" type="xml">
+                <tree string="Orders">
+                    <field name="name"/>
+                    <field name="vintage"/>
+                    <field name="varietal"/>
+                    <field name="expiration_date"/>
+                    <field name="order_type"/>
+                    <field name="remaining_stock"/>
+                    <field name="order_amount"/>
+                    <button name="submit_order" string="Order" type="object"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_pending_orders_tree" model="ir.ui.view">
+            <field name="name">view.pending.orders.tree</field>
+            <field name="model">pending.orders</field>
+
+            <field name="arch" type="xml">
+                <tree string="Pending Orders">
+                    <field name="name"/>
+                    <field name="vintage"/>
+                    <field name="varietal"/>
+                    <field name="expiration_date"/>
+                    <field name="order_type"/>
+                    <field name="remaining_stock"/>
+                    <field name="order_amount"/>
+                    <button name="recieved_order" string="Recieved" type="object"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -16,11 +16,119 @@
             </field>
         </record>
 
+        <record id="action_waiters_views" model="ir.actions.act_window">
+            <field name="name">Waiters</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">waiters</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create"> 
+                There are no waiters
+                </p><p>
+                Please add from potential waiters
+                </p>
+            </field>
+        </record>
+        
+        <record id="action_shifts_views" model="ir.actions.act_window">
+            <field name="name">Shifts</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">shifts</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create"> 
+                There are no shifts scheduled
+                </p><p>
+                Please add a shift
+                </p>
+            </field>
+        </record>
+
+        <record id="action_wines_views" model="ir.actions.act_window">
+            <field name="name">Wines</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">wines</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create"> 
+                There is nothing in inventory
+                </p><p>
+                Please add something
+                </p>
+            </field>
+        </record>
+
+        <record id="action_food_views" model="ir.actions.act_window">
+            <field name="name">Food</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">food</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create"> 
+                There is nothing in inventory
+                </p><p>
+                Please add something
+                </p>
+            </field>
+        </record>
+
+        <record id="action_orders_views" model="ir.actions.act_window">
+            <field name="name">Orders</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">orders</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create"> 
+                There is nothing in orders
+                </p><p>
+                Please add something
+                </p>
+            </field>
+        </record>
+
+        <record id="action_pending_orders_views" model="ir.actions.act_window">
+            <field name="name">Pending Orders</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pending.orders</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create"> 
+                There is nothing in orders
+                </p><p>
+                Please add something
+                </p>
+            </field>
+        </record>
+        
+        <record id="action_bookings_views" model="ir.actions.act_window">
+            <field name="name">Bookings</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">bookings</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create"> 
+                There are no bookings
+                </p><p>
+                Please add something
+                </p>
+            </field>
+        </record>
+
         <menuitem id="menu_administration_root" name="WaiterWise" sequence="100"/>
 
         <menuitem id="menu_waiters_categ" name="Waiters" parent="menu_administration_root" sequence="10"/>
+        <menuitem id="menu_shifts_categ" name="Shifts" parent="menu_administration_root" sequence="10"/>
+        <menuitem id="menu_inventory_categ" name="Inventory" parent="menu_administration_root" sequence="10"/>
+        <menuitem id="menu_bookings_categ" name="Bookings" parent="menu_administration_root" sequence="10"/>
 
-        <menuitem id="menu_potential_lecturers" name="Potential Lecturers" parent="menu_waiters_categ" sequence="1" action="action_potential_waiters_views"/>
+        <menuitem id="menu_potential_waiters" name="Potential Waiters" parent="menu_waiters_categ" sequence="1" action="action_potential_waiters_views"/>
+        <menuitem id="menu_waiters" name="Waiters" parent="menu_waiters_categ" sequence="2" action="action_waiters_views"/>
+        <menuitem id="menu_shifts" name="View Shift List" parent="menu_shifts_categ" sequence="1" action="action_shifts_views"/>
+        <menuitem id="menu_wines" name="Wine" parent="menu_inventory_categ" sequence="1" action="action_wines_views"/>
+        <menuitem id="menu_food" name="Food" parent="menu_inventory_categ" sequence="2" action="action_food_views"/>
+        <menuitem id="menu_orders" name="Orders" parent="menu_inventory_categ" sequence="3" action="action_orders_views"/>
+        <menuitem id="menu_pending_orders" name="Pending Orders" parent="menu_inventory_categ" sequence="4" action="action_pending_orders_views"/>
+        <menuitem id="menu_view_bookings" name="View Bookings" parent="menu_bookings_categ" sequence="1" action="action_bookings_views"/>
 
     </data>
 </odoo>

@@ -1,0 +1,25 @@
+<odoo>
+    <data>
+
+        <record id="view_bookings_tree" model="ir.ui.view">
+            <field name="name">view.bookings.tree</field>
+            <field name="model">bookings</field>
+
+            <field name="arch" type="xml">
+                <tree string="Bookings">
+                    <field name="name"/>
+                    <field name="phone_number"/>
+                    <field name="email_address"/>
+                    <field name="seating"/>
+                    <field name="table_6"/>
+                    <field name="table_4"/>
+                    <field name="table_2"/>
+                    <field name="con_status"/>
+                    <button name='confirm' string='CONFIRM' type='object' attrs="{'invisible': [('con_status', '=', True)]}"/>
+                    <button name='done' string='DONE' type='object' attrs="{'invisible': [('con_status','=',False)]}"/>
+                </tree>
+            </field>
+        </record>
+    
+    </data>
+</odoo>

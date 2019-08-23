@@ -30,6 +30,10 @@
         'views/templates.xml',
         'views/waiters_view.xml',
         'views/menu_view.xml',
+        'views/shifts_view.xml',
+        'views/inventory_view.xml',
+        'views/orders_view.xml',
+        'views/bookings_view.xml',
 
     ],
     # only loaded in demonstration mode

@@ -1,5 +1,6 @@
 <odoo>
     <data>
+
         <record id="view_potential_waiters_tree" model="ir.ui.view">
             <field name="name">view.potential.waiters.tree</field>
             <field name="model">potential.waiters</field>
@@ -8,11 +9,32 @@
                 <tree string="Potential Waiters Tree">
                     <field name="first_name"/>
                     <field name="last_name"/>
+                    <field name="email_address"/>
+                    <field name="password"/>
+                    <field name="phone_number"/>
+                    <field name="id_number"/>
+                    <field name="dob"/>
+                    <field name="cv"/>
+                    <button name="accept_waiter" string="Accept" type="object"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_waiters_tree" model="ir.ui.view">
+            <field name="name">view.waiters.tree</field>
+            <field name="model">waiters</field>
+
+            <field name="arch" type="xml">
+                <tree string="Potential Waiters Tree">
+                    <field name="first_name"/>
+                    <field name="last_name"/>
+                    <field name="email_address"/>
                     <field name="phone_number"/>
                     <field name="id_number"/>
                     <field name="dob"/>
                 </tree>
             </field>
         </record>
+
     </data>
 </odoo>
