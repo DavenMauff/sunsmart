@@ -81,7 +81,7 @@ class Wines(models.Model):
 
 class Food(models.Model):
     """
-    A class used to represent wine inventory
+    A class used to represent food inventory
 
     ...
 
@@ -152,7 +152,7 @@ class Food(models.Model):
 
 class Orders(models.Model):
     """
-    A class used to represent wine inventory
+    A class used to represent (before submission) orders
 
     ...
 
@@ -223,7 +223,7 @@ class Orders(models.Model):
 
 class PendingOrders(models.Model):
     """
-    A class used to represent wine inventory
+    A class used to represent pending orders
 
     ...
 
