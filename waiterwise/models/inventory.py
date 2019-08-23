@@ -3,6 +3,33 @@ from odoo.exceptions import ValidationError
 
 
 class Wines(models.Model):
+    """
+    A class used to represent wine inventory
+
+    ...
+
+    Attributes
+    ----------
+    name : str
+        the name of the wine
+
+    vintage : str
+        the vintage of the wine
+
+    varietal : str
+        the varietal of the wine
+
+    stock : str
+        the current stock count of the wine in inventory
+
+    Methods
+    -------
+    wine_stock(self)
+        Function to automatically place wine inventory items into a 'Orders' table for ease of use. A threshold is defined, and once the stock item has 
+        gone below that threshold, it will automatically be moved. The method also holds functionality to to update current stock levels in both the 
+        'Orders' and 'Pending Orders' table after the items have been moved, and handle duplications if the item has moved below the threshold again
+        from another stock update
+    """
     _name = "wines"
     _description = "Wines"
 
@@ -14,6 +41,16 @@ class Wines(models.Model):
     # As soon as the stock variable in inventory changes, system whether to automatically place the item in an 'Order' table
     @api.onchange('stock')
     def wine_stock(self):
+        """Function to automatically place wine inventory items into a 'Orders' table for ease of use. A threshold is defined, and once the stock item has 
+        gone below that threshold, it will automatically be moved. The method also holds functionality to to update current stock levels in both the 
+        'Orders' and 'Pending Orders' table after the items have been moved, and handle duplications if the item has moved below the threshold again
+        from another stock update
+
+        Parameters
+        ----------
+        self : str
+            The items inventory details are passed through the function to update varies other tables
+        """
         rec = []
 
         for record in self:
@@ -43,6 +80,30 @@ class Wines(models.Model):
 
 
 class Food(models.Model):
+    """
+    A class used to represent wine inventory
+
+    ...
+
+    Attributes
+    ----------
+    name : str
+        the name of the food item
+
+    expiration_date : str
+        the expiration date of the food
+
+    stock : str
+        the current stock count of the food 
+
+    Methods
+    -------
+    food_stock(self)
+        Function to automatically place food inventory items into a 'Orders' table for ease of use. A threshold is defined, and once the stock item has 
+        gone below that threshold, it will automatically be moved. The method also holds functionality to to update current stock levels in both the 
+        'Orders' and 'Pending Orders' table after the items have been moved, and handle duplications if the item has moved below the threshold again
+        from another stock update
+    """
     _name = "food"
     _description = "Food"
 
@@ -51,7 +112,18 @@ class Food(models.Model):
     stock = fields.Integer(string="Stock")
 
     @api.onchange('stock')
-    def wine_stock(self):
+    def food_stock(self):
+        """Function to automatically place wine inventory items into a 'Orders' table for ease of use. A threshold is defined, and once the stock item has 
+        gone below that threshold, it will automatically be moved. The method also holds functionality to to update current stock levels in both the 
+        'Orders' and 'Pending Orders' table after the items have been moved, and handle duplications if the item has moved below the threshold again
+        from another stock update
+
+        Parameters
+        ----------
+        self : str
+            The items inventory details are passed through the function to update varies other tables
+        """
+
         # Checks to see if item is already in the 'Orders' table
         # This may occur, if the item passes below the threshold the first time (<5) and then the stock moves downward again from 4 to 3
         # The system in the duplication case will not add a duplicated record but instead update the stock remaining field in the 'Orders" table
@@ -79,6 +151,40 @@ class Food(models.Model):
 
 
 class Orders(models.Model):
+    """
+    A class used to represent wine inventory
+
+    ...
+
+    Attributes
+    ----------
+    name : str
+        the name of the order
+
+    vintage : str
+        the vintage of the order (wine)
+
+    varietal : str
+        the varietal of the order (wine)
+
+    expiration_date : str
+        the expiration date of the order (food)
+
+    order_type : str
+        the type of order (wine or food)
+
+    remaining_stock : str
+        the current stock count of the order in inventory
+
+    order_amount : str
+        the amount to be ordered
+
+    Methods
+    -------
+    submit_order(self)
+        Function to submit order, moving the item from the 'Orders' table to the 'Pending Orders' tables. The method will validate only when an order amount
+        has been specified and will throw an error otherwise
+    """
     _name = "orders"
     _description = "Orders"
 
@@ -93,6 +199,15 @@ class Orders(models.Model):
 
     # Button used to submit the order from the 'Orders' table, moving the order from the 'Orders' table to the 'Pending Orders' table
     @api.one
+    """Function to submit order, moving the item from the 'Orders' table to the 'Pending Orders' tables. The method will validate only when an order amount
+        has been specified and will throw an error otherwise
+
+        Parameters
+        ----------
+        self : str
+            Information pertaining to the 'Orders' table to submit information when moving the item to the 'Pending Orders' table 
+        """
+
     def submit_order(self):
         # If the user has not entered an order amount, an error will be displayed
         if self.order_amount <= 0:
@@ -107,6 +222,43 @@ class Orders(models.Model):
 
 
 class PendingOrders(models.Model):
+    """
+    A class used to represent wine inventory
+
+    ...
+
+    Attributes
+    ----------
+    name : str
+        the name of the order
+
+    vintage : str
+        the vintage of the order (wine)
+
+    varietal : str
+        the varietal of the order (wine)
+
+    expiration_date : str
+        the expiration date of the order (food)
+
+    order_type : str
+        the type of order (wine or food)
+
+    remaining_stock : str
+        the current stock count of the order in inventory
+
+    order_amount : str
+        the amount to be ordered
+
+    Methods
+    -------
+    recieved_order(self)
+        Function to verify an order has been recieved. In doing so, the item will move from the 'Pending Orders' table to the Inventory tables
+        The method also contains functionality to check if the item already appears in the inventory table, and therfore will update the stock
+        count with the order amount and the current stock amount, if the item does not appear, the function will then create a new item in the 
+        table. The function also sifts through the items by type, placing Wine and Food in the 'Wine' and 'Food' table respectively.
+    """
+
     _name = 'pending.orders'
     _description = 'Pending Orders'
 
@@ -121,6 +273,17 @@ class PendingOrders(models.Model):
     # Button used to specify the order has been recieved, adding it back to the current stock of the item in the inventory tables
     @api.one
     def recieved_order(self):
+        """Function to verify an order has been recieved. In doing so, the item will move from the 'Pending Orders' table to the Inventory tables
+        The method also contains functionality to check if the item already appears in the inventory table, and therfore will update the stock
+        count with the order amount and the current stock amount, if the item does not appear, the function will then create a new item in the 
+        table. The function also sifts through the items by type, placing Wine and Food in the 'Wine' and 'Food' table respectively.
+
+        Parameters
+        ----------
+        self : str
+            Information pertaining to the 'Pending Orders' class in order to submit information when transfering the item between tables
+        """
+
         # When totaling variables obtained from the instance of the current class, they're got to be assigned and then assigned variables summed
         current = self.remaining_stock
         recieved = self.order_amount
@@ -152,6 +315,8 @@ class PendingOrders(models.Model):
                             {'name': self.name, 'vintage': self.vintage, 'varietal': self.varietal, 'stock': self.order_amount})
             else:
                 # If this statement is executed, the item is assumed to be of type food, as previous if statement was rejected
+                # PLEASE NOTE: no expiration date is assumed from this field, as it is expected the manager to update the expiration date when the item is recieved
+                # However, functionality may be added to automatically assume different expiration dates depending on what type of food is recieved
                 for record_one in self:
                     # Checks if that item already appears in the 'Food' table
                     rec = self.env['food'].search(
