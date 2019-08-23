@@ -31,12 +31,18 @@ class Bookings(models.Model):
         representing what tables the booking has (e.g. USE CASE: 1 six seater OR 1 four seater + 1 two seater)
 
     Methods
+        * Please note that 'table' used in the following explanation DO NOT refer to a table in the database, but rather a resaurant table
     -------
     confirm(self)
-        Checks the length of a ID number for verification
+        Function to dynamically allocate tables to bookings, based on both a space basis and a table allocation basis. The function 
+        also holds functionality to dynamically combine tables. In practice, this is a more efficient way for resturants to allocate space 
+        because of table sizing and space requirements that reach beyond the amount of people they can fit into a room, but rather 
+        with how many guests can be accomodated within a single seating. The function can run indefinitly, as reallocation may take place as tables 
+        finish
 
     done(self)
-        Checks the length of a phone number for verification 
+        Method to allow for the reallocation of space and tables when a table is finished. The function will clear the current table from the database 
+        allowing for another table to be allocated to another booking
     """
 
     _name = "bookings"
@@ -60,6 +66,7 @@ class Bookings(models.Model):
         for rec in self:
             capicty = []
             # Count is able to dynamically update this way, for example when a table leaves i.e. opening up space for more tables, each time the function runs, it recounts
+
             # Count's amount of six seaters and multiple to find amount of people
             capicty.append(self.env['bookings'].search_count(
                 ['&', ('seating', '=', "6"), ('con_status', '=', True)]) * 6)
