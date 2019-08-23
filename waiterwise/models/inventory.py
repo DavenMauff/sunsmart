@@ -11,24 +11,34 @@ class Wines(models.Model):
     varietal = fields.Char(string="Varietal")
     stock = fields.Integer(string="Stock", readonly=False, )
 
+    # As soon as the stock variable in inventory changes, system whether to automatically place the item in an 'Order' table
     @api.onchange('stock')
     def wine_stock(self):
         rec = []
 
         for record in self:
+            # Checks to see if item is already in the 'Orders' table
+            # This may occur, if the item passes below the threshold the first time (<5) and then the stock moves downward again from 4 to 3
+            # The system in the duplication case will not add a duplicated record but instead update the stock remaining field in the 'Orders" table
             rec = self.env['orders'].search(
                 [('name', '=', record.name)])
             if rec:
+                # Changes the remaining stock in 'Orders' table if the item is already in the orders table
                 rec.write({'remaining_stock': self.stock})
             else:
+                # If the item has passed below the threshold and it's not in the 'Orders' table, the item will then be added
                 if self.stock < 5:
                     self.env['orders'].create(
                         {'name': self.name, 'vintage': self.vintage, 'varietal': self.varietal, 'expiration_date': '', 'order_type': 'Wine', 'remaining_stock': self.stock, 'order_amount': 0})
 
         for record in self:
+            # If the item is already been moved to the 'Pending Orders' table (i.e. the admin as clicked the Order Button from the 'Orders' table)
+            # It will update the stock remaining in that table too
+            # This is important, because when the user clicks that they've recieved the order, it will plus on to the existing stock in the inventory tables
             rec = self.env['pending.orders'].search(
                 [('name', '=', record.name)])
             if rec:
+                # Updates remaining stock if the record appears in the 'Pending Orders' table
                 rec.write({'remaining_stock': self.stock})
 
 
@@ -42,21 +52,29 @@ class Food(models.Model):
 
     @api.onchange('stock')
     def wine_stock(self):
-
+        # Checks to see if item is already in the 'Orders' table
+        # This may occur, if the item passes below the threshold the first time (<5) and then the stock moves downward again from 4 to 3
+        # The system in the duplication case will not add a duplicated record but instead update the stock remaining field in the 'Orders" table
         for record in self:
             rec = self.env['orders'].search(
                 [('name', '=', record.name)])
             if rec:
+                # Changes the remaining stock in 'Orders' table if the item is already in the orders table
                 rec.write({'remaining_stock': self.stock})
             else:
+                # If the item has passed below the threshold and it's not in the 'Orders' table, the item will then be added
                 if self.stock < 5:
                     self.env['orders'].create(
                         {'name': self.name, 'vintage': '', 'varietal': '', 'expiration_date': self.expiration_date, 'order_type': 'Food', 'remaining_stock': self.stock, 'order_amount': 0})
 
         for record in self:
+            # If the item is already been moved to the 'Pending Orders' table (i.e. the admin as clicked the Order Button from the 'Orders' table)
+            # It will update the stock remaining in that table too
+            # This is important, because when the user clicks that they've recieved the order, it will plus on to the existing stock in the inventory tables
             rec = self.env['pending.orders'].search(
                 [('name', '=', record.name)])
             if rec:
+                # Updates remaining stock if the record appears in the 'Pending Orders' table
                 rec.write({'remaining_stock': self.stock})
 
 
@@ -73,14 +91,17 @@ class Orders(models.Model):
     # Used 0 here, because even if 0 is passed in from previous classes, if the user creates a new order that is not set from the previous classes of inventory it will populate a default value and therefore is not redundant
     order_amount = fields.Integer(string="Order Amount", default=0, )
 
-    # Add logic to check if the order amount is empty
+    # Button used to submit the order from the 'Orders' table, moving the order from the 'Orders' table to the 'Pending Orders' table
     @api.one
     def submit_order(self):
+        # If the user has not entered an order amount, an error will be displayed
         if self.order_amount <= 0:
             raise ValidationError("Please enter an order amount!")
         else:
+            # If an order amount has been specified, the order will be moved to the 'Pending Orders' table
             self.env['pending.orders'].create({'name': self.name, 'vintage': self.vintage, 'varietal': self.varietal, 'expiration_date': self.expiration_date,
                                                'order_type': self.order_type, 'remaining_stock': self.remaining_stock, 'order_amount': self.order_amount})
+            # Once the order has been submitted, it will be removed from the 'Orders' table becuase it will have been placed in the 'Pending Orders' table
             self.env['orders'].search(
                 [('name', '=', self.name)]).unlink()
 
@@ -97,30 +118,49 @@ class PendingOrders(models.Model):
     remaining_stock = fields.Integer(string="Remaining Stock")
     order_amount = fields.Integer(string="Order Amount")
 
+    # Button used to specify the order has been recieved, adding it back to the current stock of the item in the inventory tables
     @api.one
     def recieved_order(self):
+        # When totaling variables obtained from the instance of the current class, they're got to be assigned and then assigned variables summed
         current = self.remaining_stock
         recieved = self.order_amount
+        # Adding the current stock amount with the recieved stock amount from the order in the 'Pending Orders' table
+        # Only one instance of total variables will be needed for both categories wine and food, as logic below handles differentitation
+        # See logic explanations below for validity of the above comment
         total = current + recieved
-        print(total)
         for record in self:
+            # Statement to check what type of item has been recieved so that it can be added to the correct table
+            # There is an inventory table for food items and another for wine items
+            # Therefore an attribute of 'order_type' is used to differentiate the item recieved
             if self.order_type == 'Wine':
                 for record_one in self:
+                    # Checks whether the item is already in inventory to update the total
+                    # This is important as the user may wish to place an order directly from the 'Orders' that us not part of inventory
+                    # This can be replicated by a restaurant adding a new wine to the sales selection
                     rec = self.env['wines'].search(
                         [('name', '=', record_one.name)])
                     if rec:
+                        # If the item does already appear, update the stock variable
+                        # Note this is the variable that is checked to automatically add the item to the 'Orders' table
+                        # Therefore, if this value is below 5, it will be re-added to the 'Orders' table, this is because the threshold is assumed to be five
+                        # Thresholds for individual items can be an improvement and a new feature
                         rec.write(
                             {'stock': total})
                     else:
+                        # If the item isn't in the inventory tables (different table for wine and food), it will create the item
                         self.env['wines'].create(
                             {'name': self.name, 'vintage': self.vintage, 'varietal': self.varietal, 'stock': self.order_amount})
             else:
+                # If this statement is executed, the item is assumed to be of type food, as previous if statement was rejected
                 for record_one in self:
+                    # Checks if that item already appears in the 'Food' table
                     rec = self.env['food'].search(
                         [('name', '=', record_one.name)])
                     if rec:
+                        # If the item does appear, it will update the stock value of that item
                         rec.write(
                             {'stock': total})
                     else:
+                        # If the item does not appear, it will be created
                         self.env['food'].create(
                             {'name': self.name, 'expiration_date': "Please Enter", 'stock': self.order_amount})
