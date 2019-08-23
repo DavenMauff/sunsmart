@@ -41,7 +41,7 @@ class Bookings(models.Model):
         finish
 
     done(self)
-        Method to allow for the reallocation of space and tables when a table is finished. The function will clear the current table from the database 
+        Function to allow for the reallocation of space and tables when a table is finished. The function will clear the current table from the database 
         allowing for another table to be allocated to another booking
     """
 
@@ -63,6 +63,17 @@ class Bookings(models.Model):
 
     @api.multi
     def confirm(self):
+        """Function to dynamically allocate tables to bookings, based on both a space basis and a table allocation basis. The function 
+        also holds functionality to dynamically combine tables. In practice, this is a more efficient way for resturants to allocate space 
+        because of table sizing and space requirements that reach beyond the amount of people they can fit into a room, but rather 
+        with how many guests can be accomodated within a single seating. The function can run indefinitly, as reallocation may take place as tables 
+        finish
+
+        Parameters
+        ----------
+        self : str
+            Information pertaining to the bookings class in order to update upon request
+        """
         for rec in self:
             capicty = []
             # Count is able to dynamically update this way, for example when a table leaves i.e. opening up space for more tables, each time the function runs, it recounts
@@ -108,6 +119,14 @@ class Bookings(models.Model):
 
     @api.multi
     def done(self):
+        """Function to allow for the reallocation of space and tables when a table is finished. The function will clear the current table from the database 
+        allowing for another table to be allocated to another booking
+
+        Parameters
+        ----------
+        email_address : str
+            The unique ID of the bookings in order to remove it from the list
+        """
         # Once a table finishes and the admin clicks 'DONE', it will remove the seating from the system to reallocate the space to other potential bookings
         self.env['bookings'].search([
             ('email_address', '=', self.email_address)]).unlink()
