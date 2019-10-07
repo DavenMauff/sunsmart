@@ -7,4 +7,4 @@ access_admin_food,access_admin_food_waiters,model_food,group_admin,1,1,1,1
 access_admin_orders,access_admin_orders_waiters,model_orders,group_admin,1,1,1,1
 access_admin_pending_orders,access_admin_pending_orders_waiters,model_pending_orders,group_admin,1,1,1,1
 access_admin_bookings,access_admin_bookings_waiters,model_bookings,group_admin,1,1,1,1
-access_waiter_shifts,access_admin_shifts,model_shifts,group_waiters,1,0,0,0
+access_waiter_shifts,access_admin_shifts,model_shifts,group_waiters,1,1,1,1

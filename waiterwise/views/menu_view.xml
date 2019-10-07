@@ -1,6 +1,6 @@
 <odoo>
     <data>
-
+        <!--Potential Waiter Action-->
         <record id="action_potential_waiters_views" model="ir.actions.act_window">
             <field name="name">Potential Waiters</field>
             <field name="type">ir.actions.act_window</field>
@@ -15,7 +15,7 @@
                 </p>
             </field>
         </record>
-
+        <!--Waiter Action-->
         <record id="action_waiters_views" model="ir.actions.act_window">
             <field name="name">Waiters</field>
             <field name="type">ir.actions.act_window</field>
@@ -29,7 +29,7 @@
                 </p>
             </field>
         </record>
-        
+        <!--Shift Actionw-->
         <record id="action_shifts_views" model="ir.actions.act_window">
             <field name="name">Shifts</field>
             <field name="type">ir.actions.act_window</field>
@@ -43,7 +43,7 @@
                 </p>
             </field>
         </record>
-
+        <!--Wine Action-->
         <record id="action_wines_views" model="ir.actions.act_window">
             <field name="name">Wines</field>
             <field name="type">ir.actions.act_window</field>
@@ -57,7 +57,7 @@
                 </p>
             </field>
         </record>
-
+        <!--Food Action-->
         <record id="action_food_views" model="ir.actions.act_window">
             <field name="name">Food</field>
             <field name="type">ir.actions.act_window</field>
@@ -71,7 +71,7 @@
                 </p>
             </field>
         </record>
-
+        <!--Order Action-->
         <record id="action_orders_views" model="ir.actions.act_window">
             <field name="name">Orders</field>
             <field name="type">ir.actions.act_window</field>
@@ -85,7 +85,7 @@
                 </p>
             </field>
         </record>
-
+        <!--Pending Order Action-->
         <record id="action_pending_orders_views" model="ir.actions.act_window">
             <field name="name">Pending Orders</field>
             <field name="type">ir.actions.act_window</field>
@@ -99,7 +99,7 @@
                 </p>
             </field>
         </record>
-        
+            <!--Bookings Action-->
         <record id="action_bookings_views" model="ir.actions.act_window">
             <field name="name">Bookings</field>
             <field name="type">ir.actions.act_window</field>

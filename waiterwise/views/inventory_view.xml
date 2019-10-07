@@ -1,6 +1,6 @@
 <odoo>
     <data>
-
+            <!--Wines View-->
           <record id="view_wines_tree" model="ir.ui.view">
             <field name="name">view.wines.tree</field>
             <field name="model">wines</field>
@@ -15,7 +15,7 @@
                 </tree>
             </field>
         </record>
-
+            <!--Food View-->
           <record id="view_food_tree" model="ir.ui.view">
             <field name="name">view.food.tree</field>
             <field name="model">food</field>

@@ -199,7 +199,8 @@ class Orders(models.Model):
 
     # Button used to submit the order from the 'Orders' table, moving the order from the 'Orders' table to the 'Pending Orders' table
     @api.one
-    """Function to submit order, moving the item from the 'Orders' table to the 'Pending Orders' tables. The method will validate only when an order amount
+    def submit_order(self):
+        """Function to submit order, moving the item from the 'Orders' table to the 'Pending Orders' tables. The method will validate only when an order amount
         has been specified and will throw an error otherwise
 
         Parameters
@@ -207,8 +208,6 @@ class Orders(models.Model):
         self : str
             Information pertaining to the 'Orders' table to submit information when moving the item to the 'Pending Orders' table 
         """
-
-    def submit_order(self):
         # If the user has not entered an order amount, an error will be displayed
         if self.order_amount <= 0:
             raise ValidationError("Please enter an order amount!")

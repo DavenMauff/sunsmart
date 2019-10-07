@@ -1,6 +1,6 @@
 <odoo>
     <data>
-
+        <!--Shift View-->
         <record id="view_shifts_tree" model="ir.ui.view">
             <field name="name">view.shifts.tree</field>
             <field name="model">shifts</field>

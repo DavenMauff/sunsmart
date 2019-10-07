@@ -1,6 +1,6 @@
 <odoo>
     <data>
-
+        <!--Orders View-->
         <record id="view_orders_tree" model="ir.ui.view">
             <field name="name">view.orders.tree</field>
             <field name="model">orders</field>
@@ -18,7 +18,7 @@
                 </tree>
             </field>
         </record>
-
+        <!--Pending Orders View-->
         <record id="view_pending_orders_tree" model="ir.ui.view">
             <field name="name">view.pending.orders.tree</field>
             <field name="model">pending.orders</field>

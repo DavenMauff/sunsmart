@@ -1,6 +1,6 @@
 <odoo>
     <data>
-
+        <!--Bookings View-->
         <record id="view_bookings_tree" model="ir.ui.view">
             <field name="name">view.bookings.tree</field>
             <field name="model">bookings</field>
