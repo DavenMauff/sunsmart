@@ -1,3 +1,3 @@
 # SunSmart Education System 
 
-## Education ERP System Built on Odoo
+#### Education ERP System Built on Odoo
